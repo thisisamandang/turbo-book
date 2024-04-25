@@ -5,10 +5,12 @@ import sequelize from "./utils/database";
 import "./models/event";
 import userRoutes from "./routes/userRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
+import bodyParser from "body-parser";
 dotenv.config();
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 app.use("/", userRoutes);
 app.use("/", eventRoutes);
 

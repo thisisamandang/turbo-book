@@ -27,4 +27,4 @@ const Events = sequelize.define("event", {
   },
 });
 
-module.exports = Events;
+export default Events;
