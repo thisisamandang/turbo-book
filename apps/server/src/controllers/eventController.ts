@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import Events from "../models/event";
 
+const limit = 5;
+
 export const postEvent = async (req: Request, res: Response) => {
   const { title, description, availableSlots, thumbnail } = req.body;
   Events.create({
@@ -18,8 +20,15 @@ export const postEvent = async (req: Request, res: Response) => {
 };
 
 export const getEvents = async (req: Request, res: Response) => {
+  let page = req.query.page || 1;
+  page = parseInt(page.toString());
+  const offset = (page - 1) * limit;
   try {
-    const events = await Events.findAll();
+    const events = await Events.findAll({
+      offset,
+      limit,
+      order: [["updatedAt", "DESC"]],
+    });
     if (events.length === 0) {
       return res.status(404).json({ error: "No events were found" });
     }
