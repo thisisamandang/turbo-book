@@ -94,7 +94,9 @@
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
   border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
+  transition:
+    background 200ms,
+    border 200ms;
 }
 
 .card span {
@@ -298,9 +300,10 @@
 }
 
 .backgroundGradient {
-  top: -500px;
-  width: 1000px;
-  height: 1000px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   opacity: 0.15;
 }
 
