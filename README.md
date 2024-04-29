@@ -1,5 +1,12 @@
 # API Documentation
 ```url: 15.206.145.222:3000```
+Mock data to test api
+```
+1. open workbench
+2. File > Open SQL Script grouple_db.sql from the repository
+3. Run the script
+4. Done
+```
 ## Setup
 
 Before running the API server, make sure to follow these setup instructions:
@@ -8,13 +15,15 @@ Before running the API server, make sure to follow these setup instructions:
    ```bash
    git clone <repository_url>
 2. cd <project_directory>
-
+```
 npm install
-# or
+or
 yarn install
-
+```
+```
 cp .env.example .env
-
+fill the .env with the data
+```
 Mock data to test api
 ```
 1. open workbench
