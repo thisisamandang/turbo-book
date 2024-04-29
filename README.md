@@ -1,81 +1,244 @@
-# Turborepo starter
+# API Documentation
+```url: 15.206.145.222:3000```
+## Setup
 
-This is an official starter Turborepo.
+Before running the API server, make sure to follow these setup instructions:
 
-## Using this example
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+2. cd <project_directory>
 
-Run the following command:
+npm install
+# or
+yarn install
 
-```sh
-npx create-turbo@latest
+cp .env.example .env
+
+Mock data to test api
+```
+1. open workbench
+2. File > Open SQL Script grouple_db.sql from the repository
+3. Run the script
+4. Done
 ```
 
-## What's inside?
+### Signup
 
-This Turborepo includes the following packages/apps:
+**Description:** This API endpoint is used for user registration.
 
-### Apps and Packages
+**URL:** `/signup`
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+**Method:** `POST`
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
 ```
-cd my-turborepo
-pnpm build
-```
+### Login
 
-### Develop
+**Description:** This API endpoint is used for user login.
 
-To develop all apps and packages, run the following command:
+**URL:** `/login`
 
-```
-cd my-turborepo
-pnpm dev
+**Method:** `POST`
+
+**Request Body:**
+```json
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
 ```
 
-### Remote Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### New Event
+Description: This API endpoint is used to create a new event.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+URL: /addEvents
 
-```
-cd my-turborepo
-npx turbo login
-```
+Method: POST
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+**Request Body:**
 
 ```
-npx turbo link
+
+{
+  "title": "Event Title",
+  "description": "Event Description",
+  "availableSlots": 100,
+  "thumbnail": "event_thumbnail_url"
+}
+```
+Response:
+
+Success Response:
+Status Code: 200 OK
+Body:
+json
+```
+{
+  "message": "Event added",
+  "event": {
+    "title": "Event Title",
+    "description": "Event Description",
+    "availableSlots": 100,
+    "thumbnail": "event_thumbnail_url"
+  }
+}
+```
+Error Response:
+Status Code: 500 Internal Server Error
+Body:
+
+{
+  "error": "Internal server error"
+}
+### Get Events
+Description: This API endpoint is used to retrieve a list of events.
+
+URL: /getEvents
+
+Method: GET
+
+Query Parameters:
+
+page (optional): Page number for pagination (default: 1)
+Response:
+
+Success Response:
+Status Code: 200 OK
+Body:
+```
+{
+  "events": [
+    {
+      "title": "Event Title",
+      "description": "Event Description",
+      "availableSlots": 100,
+      "thumbnail": "event_thumbnail_url"
+    },
+}
 ```
 
-## Useful Links
+### Update Event
+Description: This API endpoint is used to update an existing event.
 
-Learn more about the power of Turborepo:
+URL: /updateEvent/:id
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Method: PUT
+
+Request Body:
+```
+{
+  "title": "Updated Event Title",
+  "description": "Updated Event Description",
+  "availableSlots": 120,
+  "thumbnail": "updated_thumbnail_url"
+}
+
+```
+Response:
+
+Success Response:
+Status Code: 200 OK
+Body:
+```
+{
+  "message": "Event updated successfully",
+  "event": {
+    "title": "Updated Event Title",
+    "description": "Updated Event Description",
+    "availableSlots": 120,
+    "thumbnail": "updated_thumbnail_url"
+  }
+}
+```
+### Delete Event
+Description: This API endpoint is used to delete an event.
+
+URL: /deleteEvent/:id
+
+Method: DELETE
+
+Response:
+
+Success Response:
+Status Code: 200 OK
+Body:
+```
+{
+  "message": "Event deleted successfully"
+}
+```
+
+### Upload to S3
+
+**Description:** This API endpoint is used to upload an image to Amazon S3.
+
+**URL:** `s3/upload`
+
+**Method:** `POST`
+
+**Request Body:**
+- `email`: Email of the user
+- `name`: Name of the user
+
+**Request File:**
+- Image file to be uploaded
+
+**Response:**
+- Success Response:
+  - Status Code: `200 OK`
+  - Body:
+    ```json
+    {
+      "message": "Image uploaded successfully"
+    }
+    ```
+
+---
+
+### Retrieve from S3
+
+**Description:** This API endpoint is used to retrieve images stored in Amazon S3.
+
+**URL:** `s3/get`
+
+**Method:** `GET`
+
+**Response:**
+- Success Response:
+  - Status Code: `200 OK`
+  - Body:
+    ```json
+    {
+      "data": [
+        {
+          "item": {
+            "imageName": "userImage123456789.jpg",
+            "email": "user@example.com",
+            "name": "John Doe",
+            "createdAt": "2024-04-29T12:00:00Z"
+          },
+          "signedUrl": "https://s3.amazonaws.com/bucket/userImage123456789.jpg"
+        },
+        {
+          "item": {
+            "imageName": "userImage987654321.jpg",
+            "email": "another_user@example.com",
+            "name": "Jane Doe",
+            "createdAt": "2024-04-28T12:00:00Z"
+          },
+          "signedUrl": "https://s3.amazonaws.com/bucket/userImage987654321.jpg"
+        }
+      ]
+    }
+    ```
+
+---
+
+
