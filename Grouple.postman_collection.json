@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "dca3b748-c870-4e8c-8fc9-889ab27326e1",
+		"name": "Grouple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27781420"
+	},
+	"item": [
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"thisisamandang@gmail.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://15.206.145.222:3000/signup",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"thisisamandang@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtYW5zZGFuZ0BnbWFpbC5jb20iLCJpYXQiOjE3MTQzMzQ4NjEsImV4cCI6MTcxNDUxNDg2MX0.96Y8ZRJ1dOfIeofK1eOahKGSdBAHOlo9PB3RVwETgOw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"thisisamandang@gmail.com\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://15.206.145.222:3000/login",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getEvents",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoaXNpc2FtYW5kYW5nQGdtYWlsLmNvbSIsImlhdCI6MTcxNDM1NTEzOCwiZXhwIjoxNzE0NTM1MTM4fQ.ahcv2n3aKCJa9e0rg2OqrjUXa72epVqGCnGloT0OLOs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://15.206.145.222:3000/getEvents",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"getEvents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addEvent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoaXNpc2FtYW5kYW5nQGdtYWlsLmNvbSIsImlhdCI6MTcxNDM1NTEzOCwiZXhwIjoxNzE0NTM1MTM4fQ.ahcv2n3aKCJa9e0rg2OqrjUXa72epVqGCnGloT0OLOs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"something\",\n    \"description\":\"desc\",\n    \"availableSlots\":5,\n    \"thumbnail\":\"url\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://15.206.145.222:3000/addEvent",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"addEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateEvent",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoaXNpc2FtYW5kYW5nQGdtYWlsLmNvbSIsImlhdCI6MTcxNDM1NTEzOCwiZXhwIjoxNzE0NTM1MTM4fQ.ahcv2n3aKCJa9e0rg2OqrjUXa72epVqGCnGloT0OLOs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"somethingNew\",\n    \"description\":\"desc\",\n    \"availableSlots\":5,\n    \"thumbnail\":\"url\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://15.206.145.222:3000/updateEvent/2",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"updateEvent",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteEvent",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRoaXNpc2FtYW5kYW5nQGdtYWlsLmNvbSIsImlhdCI6MTcxNDM1NTEzOCwiZXhwIjoxNzE0NTM1MTM4fQ.ahcv2n3aKCJa9e0rg2OqrjUXa72epVqGCnGloT0OLOs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://15.206.145.222:3000/deleteEvent/2",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"deleteEvent",
+						"2"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "s3/upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/aman/Downloads/Aman Dang LinkedIn.jpeg"
+						},
+						{
+							"key": "email",
+							"value": "abcdef@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "aman",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://15.206.145.222:3000/s3/upload",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"s3",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "s3/get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://15.206.145.222:3000/s3/get",
+					"protocol": "http",
+					"host": [
+						"15",
+						"206",
+						"145",
+						"222"
+					],
+					"port": "3000",
+					"path": [
+						"s3",
+						"get"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
