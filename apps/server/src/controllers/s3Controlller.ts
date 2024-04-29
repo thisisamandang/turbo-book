@@ -10,8 +10,9 @@ export const uploadToS3 = async (req: any, res: Response) => {
     const email = req.body.email;
     const name = req.body.name;
     const imageName = generateFileName();
-    console.log(file.buffer, email, name, imageName);
     const fileBuffer = file.buffer;
+    const user = await s3db.findOne({ where: { email } });
+    if (user) return res.json({ msg: "Email already exists", status: false });
     await uploadFile(fileBuffer, imageName, file.mimetype);
     await s3db.create({
       imageName,

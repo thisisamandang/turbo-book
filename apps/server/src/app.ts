@@ -9,8 +9,7 @@ import eventRoutes from "./routes/eventRoutes.js";
 import s3Routes from "./routes/s3Routes";
 import bodyParser from "body-parser";
 import SocketService from "./services/socket";
-dotenv.config({ path: __dirname + "/.env" });
-
+dotenv.config();
 declare global {
   namespace Express {
     interface Request {
@@ -30,7 +29,7 @@ app.use("/", userRoutes);
 app.use("/", eventRoutes);
 app.use("/s3", s3Routes);
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 
 sequelize
   .sync()

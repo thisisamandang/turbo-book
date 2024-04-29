@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Events from "../models/event";
-import SocketService from "../services/socket";
 const limit = 5;
 
 export const postEvent = async (req: Request, res: Response) => {

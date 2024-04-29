@@ -1,9 +1,15 @@
 // import { Sequelize } from "sequelize";
 const Sequelize = require("sequelize");
-
-const sequelize = new Sequelize("grouple_db", "root", "Amandang", {
-  dialect: "mysql",
-  host: "localhost",
-});
+import dotenv from "dotenv";
+dotenv.config();
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    dialect: "mysql",
+    host: process.env.DB_HOST,
+  }
+);
 
 export default sequelize;
